@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-
+import {  HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +15,9 @@ export class EventsService {
 //#endregion
 
 //#region Methods
-
+getEvents(): Observable<Event[]> {
+  return this.httpClient.get<Event[]>(this.url);
+}
 
 //#endregion
 }

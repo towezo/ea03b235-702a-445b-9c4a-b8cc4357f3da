@@ -1,18 +1,23 @@
-<div>
-
-<div> 
-    <img src="" alt="">
-    <p> titel</p>
-</div>
-
-<div> 
-    <img src="" alt="">
-</div>
-
-<div>
-<div>icon and location  </div>
-<div> startdatum</div>
-<div> enddatum</div>
-</div>
-
-</div>
+<div *ngFor="let event of events" class="border border-slate-500  p-4">
+    <div class="flex flex-row p-4">
+      <img class="w-12 h-12 rounded-full" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/1200px-User_icon-cp.svg.png" alt="Flyer">
+      <p class="w-1/2">{{ event.title }}</p>
+    </div>
+    
+    <div class="w-48 h-48">
+      <!-- Hier benötigst du einen korrekten Bildpfad -->
+      <img [src]="event.flyerFront" alt="Venue"> <!-- Du solltest `imagePath` durch das korrekte Attribut ersetzen, das den Pfad des Bildes enthält -->
+    </div>
+  
+    <div>
+      <div class="flex flex-row p-4">
+        <img class=" flex flex-row w-8 h-8" src="https://static.vecteezy.com/system/resources/previews/000/552/683/non_2x/geo-location-pin-vector-icon.jpg" alt="Icon"> 
+       <p>
+           {{ event.venue?.name }}
+       </p>
+      </div>
+      <div>{{ event.startTime }}</div> <!-- Fehler behoben hier -->
+      <div>{{ event.endTime }}</div>
+    </div>
+  </div>
+  
