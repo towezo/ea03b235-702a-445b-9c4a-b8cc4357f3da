@@ -1,23 +1,41 @@
-<div *ngFor="let event of events" class="border border-slate-500  p-4">
-    <div class="flex flex-row p-4">
-      <img class="w-12 h-12 rounded-full" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/1200px-User_icon-cp.svg.png" alt="Flyer">
-      <p class="w-1/2">{{ event.title }}</p>
+<!-- Sticky Date Component -->
+<div class="sticky top-0 z-10 bg-white bg-opacity-50 h-12 flex items-center py-1 w-full">
+  <p class="text-blue-500 text-2xl font-bold px-8 ">{{ currentEventDate }}</p>
+</div>
+
+
+
+
+<div *ngFor="let event of filteredEvents"  (mouseenter)="setCurrentEventDate(event.startTime)" class="shadow-xl rounded-md m-4 border boerder-slate-500 ">
+    <div class="flex flex-row justify-center items-center p-4">
+      <img class="w-12 h-12 rounded-full mx-4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/1200px-User_icon-cp.svg.png" alt="Flyer">
+      <p class="">{{ event.title }}</p>
     </div>
     
-    <div class="w-48 h-48">
-      <!-- Hier benötigst du einen korrekten Bildpfad -->
-      <img [src]="event.flyerFront" alt="Venue"> <!-- Du solltest `imagePath` durch das korrekte Attribut ersetzen, das den Pfad des Bildes enthält -->
-    </div>
-  
-    <div>
-      <div class="flex flex-row p-4">
-        <img class=" flex flex-row w-8 h-8" src="https://static.vecteezy.com/system/resources/previews/000/552/683/non_2x/geo-location-pin-vector-icon.jpg" alt="Icon"> 
-       <p>
-           {{ event.venue?.name }}
-       </p>
+    <div class="flex flex-col">
+        <div class="  p-4">
+
+        <img class="h-64 w-full object-cover" [src]="event.flyerFront" alt="Venue"> <!-- Du solltest `imagePath` durch das korrekte Attribut ersetzen, das den Pfad des Bildes enthält -->
       </div>
-      <div>{{ event.startTime }}</div> <!-- Fehler behoben hier -->
-      <div>{{ event.endTime }}</div>
+      
+      <div>
+        <div class="flex flex-row py-2 px-4">
+          <i class="flex text-blue-600 text-xl pr-2 fa-solid fa-location-dot items-center"></i>
+          <a [href]="'https://www.google.com/maps?q=' + event.venue?.name" target="_blank">
+            {{ event.venue?.name }}
+          </a>
+          
+        </div>
+        <div class="px-4 py-2"> 
+          <div>{{ event.startTime }}</div> 
+          <div>{{ event.endTime }}</div>
+        </div>
+      </div>
+      <div class="flex justify-end py-2 px-4">
+        <i class="text-4xl text-blue-600 fa-solid fa-circle-plus" (click)="addToCart(event)"></i>
+
+
+      </div>
     </div>
+
   </div>
-  
