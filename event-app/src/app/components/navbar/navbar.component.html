@@ -3,7 +3,7 @@
     <div class="flex "> 
         <div class=" flex items-center "> 
             <input (input)="onSearchChange($event)" placeholder="search">
-            <i class="fa-solid fa-filter text-xl px-4 text-white cursor-pointer" (click)="sortEvents()"></i>
+            <i class="fa-solid fa-filter text-xl px-4 text-white cursor-pointer" ></i>
 
         </div>
     </div>
@@ -16,10 +16,7 @@
           </div>
         </div>
       </div>
-      
-    
-
-    
+          
       <div class="absolute w-96 top-6 right-12 mt-12 bg-white border shadow-lg  z-50 p-2 overflow-y-auto max-h-96" *ngIf="showCartPopup">
         <div class="flex justify-between items-center border-b p-2">
           <span class="text-lg font-bold">Warenkorb</span>

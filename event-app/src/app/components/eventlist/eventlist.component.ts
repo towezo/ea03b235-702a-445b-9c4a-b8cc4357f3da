@@ -8,23 +8,25 @@ import { EventsService } from 'src/app/services/events.service';
 })
 export class EventlistComponent implements OnInit {
 
-//#region Variables
-events: Event[] = [];
-//#endregion
+  //#region Variables
+  // Variable to store the current event date
+  currentEventDate: string | null = null;
+  // Array to hold all the event objects fetched from the service
+  events: Event[] = [];
+  //#endregion
 
-//#region Lifecycle
-constructor( private eventService: EventsService){}
+  //#region Lifecycle
+  constructor( private eventService: EventsService){}
 
-ngOnInit(){
-  this.eventService.getEvents().subscribe(data => {
-    this.events = data;
-    console.log(data);
-  });
-}
+  ngOnInit(){
+    // Fetching and initializing events array when component gets initialized
+    this.eventService.getEvents().subscribe(data => {
+      this.events = data;
+    });
+  }
+  //#endregion
 
-//#endregion
-
-//#region Methods
-//#endregion
-
+  //#region Methods
+  // Any additional methods will be added here in this region
+  //#endregion
 }
